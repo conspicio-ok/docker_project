@@ -1,0 +1,23 @@
+services:
+  mysql:
+    image: mysql:9.6
+    container_name: mysql_db
+    restart: always
+    env_file:
+      - .env
+    secrets:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_PASSWORD
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db.sql:/docker-entrypoint-initdb.d/db.sql
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
+secrets:
+  MYSQL_ROOT_PASSWORD:
+    file: secret/MYSQL_ROOT_PASSWORD.secret
+  MYSQL_PASSWORD:
+    file: secret/MYSQL_PASSWORD.secret
