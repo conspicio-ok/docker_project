@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STORE JV</title>
+
+  <!-- Google Fonts : Syne (titres) + DM Sans (corps) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="main.css" rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div class="logo">STORE JV</div>
+    <button id="cart-btn">
+      🛒 Panier
+      <span id="cart-count">0</span>
+    </button>
+  </header>
+
+  <!-- ── CATALOGUE ── -->
+  <main>
+    <h1>Catalogue</h1>
+    <div id="loader">Chargement des jeux...</div>
+    <div id="games-grid"></div>
+  </main>
+
+  <!-- ── OVERLAY + PANNEAU PANIER ── -->
+  <div id="cart-overlay"></div>
+  <div id="cart-panel">
+    <div class="cart-header">
+      <h2>Mon panier</h2>
+      <button id="close-cart">✕</button>
+    </div>
+
+    <div id="cart-items">
+      <p id="cart-empty">Votre panier est vide.</p>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cart-total">0.00 €</span>
+      </div>
+      <button id="checkout-btn">Passer commande</button>
+    </div>
+  </div>
+
+  <!-- ── TOAST NOTIFICATION ── -->
+  <div class="toast" id="toast"></div>
+</body>
+<script src="index.js"></script>
+</html>
