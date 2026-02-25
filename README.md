@@ -156,3 +156,6 @@ Ou en ligne de commande :
        docker compose up -d
 
 Si les articles sont toujours dans le panier, la persistance fonctionne correctement.
+
+!!! ATTENTION !!!
+NE PAS FAIRE ``` docker compose down -v ``` si on veut la persisatnce des donnees
