@@ -170,10 +170,6 @@ document.getElementById('close-cart').addEventListener('click', closeCart);
 // Ferme le panier en cliquant sur l'overlay (en dehors du panel)
 document.getElementById('cart-overlay').addEventListener('click', closeCart);
 
-document.getElementById('checkout-btn').addEventListener('click', () => {
-    showToast('Fonctionnalité à implémenter !');
-});
-
 // ────────────────────────────────────────
 // INIT
 // ────────────────────────────────────────

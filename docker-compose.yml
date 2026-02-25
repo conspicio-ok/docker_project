@@ -36,7 +36,7 @@ services:
       - frontend-network
 
   front:
-    image: conspiciook/front:v1.0
+    image: conspiciook/front:v1.1
     restart: always
     ports:
       - "80:80"
