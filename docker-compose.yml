@@ -35,6 +35,12 @@ services:
       - backend-network
       - frontend-network
 
+  front:
+    image: conspiciook/front:v1.0
+    restart: always
+    ports:
+      - "80:80"
+
 volumes:
   mysql_data:
 
