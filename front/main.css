@@ -279,7 +279,7 @@
 
     #checkout-btn {
       width: 100%;
-      background: var(--accent);
+      background: color-mix(in srgb, var(--accent) 80%, #555 90%);
       color: #000;
       border: none;
       padding: 0.85rem;
@@ -290,7 +290,6 @@
       cursor: pointer;
       transition: opacity 0.2s;
     }
-    #checkout-btn:hover { opacity: 0.85; }
 
     /* ────────────────────────────────────────
        ÉTAT DE CHARGEMENT / ERREUR
