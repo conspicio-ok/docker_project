@@ -5,6 +5,9 @@ services:
     restart: always
     env_file:
       - .env
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/MYSQL_ROOT_PASSWORD
+      MYSQL_PASSWORD_FILE: /run/secrets/MYSQL_PASSWORD
     secrets:
       - MYSQL_ROOT_PASSWORD
       - MYSQL_PASSWORD
@@ -13,9 +16,32 @@ services:
     volumes:
       - ./db.sql:/docker-entrypoint-initdb.d/db.sql
       - mysql_data:/var/lib/mysql
+    networks:
+      - backend-network
+
+  backend:
+    build: ./backend
+    container_name: go_api
+    restart: always
+    env_file:
+      - .env
+    secrets:
+      - MYSQL_PASSWORD
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    networks:
+      - backend-network
+      - frontend-network
 
 volumes:
   mysql_data:
+
+networks:
+  backend-network:
+  frontend-network:
+
 secrets:
   MYSQL_ROOT_PASSWORD:
     file: secret/MYSQL_ROOT_PASSWORD.secret

@@ -2,8 +2,8 @@
 -- STORE JV - Schéma MySQL
 -- =============================================
 
-CREATE DATABASE IF NOT EXISTS store_jv CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE store_jv;
+CREATE DATABASE IF NOT EXISTS partiel CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE partiel;
 
 -- ---------------------------------------------
 -- Table : games
