@@ -1,7 +1,7 @@
 // ────────────────────────────────────────
 // CONFIG
 // ────────────────────────────────────────
-const API = 'http://localhost:8080';
+const API = '';
 
 // session_id : UUID stocké en localStorage pour identifier le panier
 // Si l'utilisateur revient, son panier est retrouvé via ce même UUID

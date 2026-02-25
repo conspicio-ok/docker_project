@@ -11,13 +11,19 @@ services:
     secrets:
       - MYSQL_ROOT_PASSWORD
       - MYSQL_PASSWORD
-    ports:
-      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+    expose:
+      - "3306"
     volumes:
       - ./db.sql:/docker-entrypoint-initdb.d/db.sql
       - mysql_data:/var/lib/mysql
     networks:
-      - backend-network
+      - backend_network
 
   backend:
     build: ./backend
@@ -32,24 +38,37 @@ services:
     depends_on:
       - mysql
     networks:
-      - backend-network
-      - frontend-network
+      - backend_network
+      - frontend_network
 
   front:
-    image: conspiciook/front:v1.2
+    build: 
+      context: .
+      dockerfile: Dockerfile_front
+    container_name: front
     restart: always
     ports:
       - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - frontend_network   
+     
 
 volumes:
   mysql_data:
 
 networks:
-  backend-network:
-  frontend-network:
+  backend_network:
+    driver: bridge
+    internal: true
+  frontend_network:
+    driver: bridge
 
 secrets:
   MYSQL_ROOT_PASSWORD:
     file: secret/MYSQL_ROOT_PASSWORD.secret
   MYSQL_PASSWORD:
     file: secret/MYSQL_PASSWORD.secret
+
+
