@@ -26,7 +26,7 @@ services:
       - backend_network
 
   backend:
-    build: ./backend
+    image: mouchou/go_api-backend:v1.5
     container_name: go_api
     restart: always
     env_file:
@@ -42,9 +42,7 @@ services:
       - frontend_network
 
   front:
-    build: 
-      context: .
-      dockerfile: Dockerfile_front
+    image: mouchou/front-frontend:v1.5
     container_name: front
     restart: always
     ports:
